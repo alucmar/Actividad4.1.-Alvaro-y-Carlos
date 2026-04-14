@@ -22,6 +22,14 @@ public class Calculadora {
             } else {
                 System.out.println("Resultado: " + (num1 / num2));
             }
+
+        System.out.println("Elige operación: 1 = Sumar | 2 = Restar");
+        int opcion = sc.nextInt();
+
+        if (opcion == 1) {
+            System.out.println("Resultado: " + (num1 + num2));
+        } else if (opcion == 2) {
+            System.out.println("Resultado: " + (num1 - num2));          
         } else {
             System.out.println("Opción no válida");
         }
