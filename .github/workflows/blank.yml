@@ -1,0 +1,32 @@
+name: Java CI
+
+on:
+  push:
+    branches: [ "main", "testCalculadora" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Compile Java files
+      run: |
+        mkdir -p out
+        find . -name "*.java" > sources.txt
+        javac -d out @sources.txt
+
+    - name: Run Tests (JUnit)
+      run: |
+        java -cp out org.junit.platform.console.ConsoleLauncher --scan-classpath
