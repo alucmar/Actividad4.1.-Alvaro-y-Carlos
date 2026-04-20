@@ -27,11 +27,11 @@ jobs:
         run: |
           wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar
 
-      # Compilar código fuente y tests
+      # Compilar todo el código Java del repositorio
       - name: Compilar código
         run: |
           mkdir -p out
-          javac -cp junit-platform-console-standalone-1.9.3.jar -d out $(find src test -name "*.java")
+          javac -cp junit-platform-console-standalone-1.9.3.jar -d out $(find . -name "*.java")
 
       # Ejecutar tests
       - name: Ejecutar tests
